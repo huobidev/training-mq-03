@@ -1,14 +1,16 @@
 package io.github.huobidev.chenjun;
 
-import org.apache.kafka.clients.consumer.ConsumerRebalanceListener;
-
-import java.util.Arrays;
 import java.util.List;
+import java.util.Properties;
+
+import io.github.huobidev.Order;
 
 /**
  * consumer
  */
 public interface Consumer {
 
-    void consumer(List<String> topics,ConsumerHandler consumerHandler,ConsumerRebalanceListener consumerRebalanceListener);
+    void init(Properties props, String topic, Long offset);
+
+    List<Order> consume();
 }

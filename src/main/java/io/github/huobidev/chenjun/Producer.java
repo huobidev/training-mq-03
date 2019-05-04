@@ -1,5 +1,7 @@
 package io.github.huobidev.chenjun;
 
+import java.util.Properties;
+
 import io.github.huobidev.Order;
 
 /**
@@ -7,5 +9,7 @@ import io.github.huobidev.Order;
  */
 public interface Producer {
 
-  void sendMessage(String topic,Order order);
+    void init(Properties props);
+
+    void sendMessage(String topic, Order order);
 }
