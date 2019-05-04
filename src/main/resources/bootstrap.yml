@@ -1,0 +1,24 @@
+spring:
+  cloud.config:
+    enabled: false
+    fail-fast: false
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all #保证消息可靠性
+
+    consumer:
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: io.github.huobidev
+      enable-auto-commit: false
+      auto-offset-reset: latest
+      max-poll-records: 2000
+
+    topic: seq_topic
+
+logging:
+  level:
+    root: INFO
