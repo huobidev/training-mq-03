@@ -33,6 +33,7 @@ public class KfkProducer<T extends BaseEntity> implements Producer<T> {
     kafkaProducer.send(producerRecord, (metadata, ex) -> {
       if (ex == null) {
         System.out.println("send success " + t.getId() + " offset .. " + metadata.offset());
+        return;
       }
       System.out.println("send error" + t.getId() + " exception:" + ex.getMessage());
     });
